@@ -58,6 +58,23 @@ def verifieReflexive(listePaires):
 
     return None
 
+def verifieIrreflexive(listePaires):
+    """
+    Vérifie si les paires fournies dans la liste passée en paramètre respectent la propriété d' irréflexivité
+
+    :param listePaires: liste des paires
+
+    :return: premier élémént qui ne vérifie pas la propriété ou null
+    """
+    for x, _ in listePaires:
+        try:
+            listePaires.index((x, x))
+            return (x, x)
+        except ValueError:
+            pass
+
+    return None
+
 
 def verifieSymetrique(listePaires):
     """
@@ -75,6 +92,22 @@ def verifieSymetrique(listePaires):
 
     return None
 
+def verifieAsymetrique(listePaires):
+    """
+    Vérifie si les paires fournies dans la liste passée en paramètre respectent la propriété d'asymétrie
+
+    :param listePaires:  liste des paires
+
+    :return: première paire qui ne vérifie pas la propriété ou null
+    """
+    for x, y in listePaires:
+        try:
+            listePaires.index((y, x))
+            return (x, y)
+        except ValueError:
+            pass
+
+    return None
 
 def verifieTransitive(listePaires):
     """

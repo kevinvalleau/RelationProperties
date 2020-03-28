@@ -101,5 +101,53 @@ class TestRelationProperties(unittest.TestCase):
         # Assert
         self.assertEqual((1, 2), element)
 
+    def test_VerifieIrreflexive_ListeEstIrreflexive_AucunElementRetourne(self):
+        # Arrange
+        listeTest = [(1, 2), (2, 3), (1, 3), (2, 1), (3, 2), (3, 1)]
+        # Act
+        element = verification_proprietes.verifieIrreflexive(listeTest)
+        # Assert
+        self.assertIsNone(element)
+
+    def test_VerifieIrreflexive_ListeAvecToutesLesPaireAyantLesMemesElements_ElementUnRetourne(self):
+        # Arrange
+        listeTest = [(1, 2), (2, 3), (1, 3), (2, 1), (3, 2), (3, 1), (1, 1), (2, 2), (3, 3)]
+        # Act
+        element = verification_proprietes.verifieIrreflexive(listeTest)
+        # Assert
+        self.assertEqual((1, 1), element)
+
+    def test_VerifieIrreflexive_ListeAvecQuelquesPairesAyantLesMemesElements_ElementUnRetourne(self):
+        # Arrange
+        listeTest = [(1, 2), (2, 3), (1, 3), (2, 1), (3, 2), (3, 1), (1, 1)]
+        # Act
+        element = verification_proprietes.verifieIrreflexive(listeTest)
+        # Assert
+        self.assertEqual((1, 1), element)
+
+    def test_VerifieAsymetrique_ListeEstAsymetrique_AucunElementRetourne(self):
+        # Arrange
+        listeTest = [(1, 2), (2, 3), (1, 3)]
+        # Act
+        element = verification_proprietes.verifieAsymetrique(listeTest)
+        # Assert
+        self.assertIsNone(element)
+
+    def test_VerifieAsymetrique_ListeToutesLesPaireSymétriques_ElementUnRetourne(self):
+        # Arrange
+        listeTest = [(1, 2), (2, 3), (1, 3), (2, 1), (3, 2), (3, 1), (1, 1), (2, 2), (3, 3)]
+        # Act
+        element = verification_proprietes.verifieAsymetrique(listeTest)
+        # Assert
+        self.assertEqual((1, 2), element)
+
+    def test_VerifieAsymetrique_ListeAvecQuelquesPairesSymétriques_ElementUnRetourne(self):
+        # Arrange
+        listeTest = [(1, 2), (2, 3), (1, 3), (2, 1), (1, 1), (2, 2), (3, 3)]
+        # Act
+        element = verification_proprietes.verifieAsymetrique(listeTest)
+        # Assert
+        self.assertEqual((1, 2), element)
+
 if __name__ == '__main__':
     unittest.main()

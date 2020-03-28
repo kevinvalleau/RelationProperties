@@ -29,6 +29,16 @@ if __name__ == '__main__':
                     print(paire, " a une paire symétrique.\n")
                 else:
                     print("Relation antisymétrique.\n")
+                paire = verification_proprietes.verifieIrreflexive(listePaires)
+                if paire is not None:
+                    print(paire, " a une paire ayant les mêmes éléments.\n")
+                else:
+                    print("Relation irréflexive.\n")
+                paire = verification_proprietes.verifieAsymetrique(listePaires)
+                if paire is not None:
+                    print(paire, " a une paire symétrique.\n")
+                else:
+                    print("Relation asymétrique.\n")
         else:
             print("Format de liste invalide")
     except NameError:
