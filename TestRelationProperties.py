@@ -71,11 +71,11 @@ class TestRelationProperties(unittest.TestCase):
 
     def test_VerifieTransitive_ListeAvecQuelquesPairesTransitives_ElementUnRetourne(self):
         # Arrange
-        listeTest = [(1, 2), (2, 3),(3, 2), (3, 1), (3, 3)]
+        listeTest = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (3, 1), (0, 2), (2, 1)]
         # Act
         element = verification_proprietes.verifieTransitive(listeTest)
         # Assert
-        self.assertEqual((1, 2), element)
+        self.assertEqual((0, 2), element)
 
     def test_VerifieAntisymetrique_ListeEstAntisymetrique_AucunElementRetourne(self):
         # Arrange
@@ -93,7 +93,7 @@ class TestRelationProperties(unittest.TestCase):
         # Assert
         self.assertEqual((1, 2), element)
 
-    def test_VerifieTransitive_ListeAvecQuelquesPairesSymetrique_ElementUnRetourne(self):
+    def test_VerifieAntisymetrique_ListeAvecQuelquesPairesSymetrique_ElementUnRetourne(self):
         # Arrange
         listeTest =  [(1, 2), (2, 3), (1, 3), (2, 1), (1, 1), (2, 2), (3, 3)]
         # Act

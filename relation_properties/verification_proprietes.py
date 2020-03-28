@@ -37,7 +37,7 @@ def creeFiltreParPremierMembre(membre):
     """
 
     def filtre(paire):
-        return membre == paire[0]
+        return membre == paire[0] and membre != paire[1]
 
     return filtre
 
@@ -103,7 +103,8 @@ def verifieAsymetrique(listePaires):
     for x, y in listePaires:
         try:
             listePaires.index((y, x))
-            return (x, y)
+            if x != y:
+                return (x, y)
         except ValueError:
             pass
 
@@ -121,7 +122,6 @@ def verifieTransitive(listePaires):
         filtreY = creeFiltreParPremierMembre(y)
         # On filtre les paires de la liste qui commencent pas le second membre de la paire en cours
         listePairesAPartirdeY = list(filter(filtreY, listePaires))
-
         if listePairesAPartirdeY != []:
             for a, b in listePairesAPartirdeY:
                 # Pour chaque paire, on vérifie si on en trouve une qui commence par x et finit par b
@@ -131,9 +131,9 @@ def verifieTransitive(listePaires):
                 except ValueError:
                     return (x, y)
         else:
-            return (x, y)
+            pass
 
-        return None
+    return None
 
 def verifieAntisymetrique(listePaires):
     """
