@@ -77,5 +77,29 @@ class TestRelationProperties(unittest.TestCase):
         # Assert
         self.assertEqual((1, 2), element)
 
+    def test_VerifieAntisymetrique_ListeEstAntisymetrique_AucunElementRetourne(self):
+        # Arrange
+        listeTest = [(1, 2), (2, 3), (1, 3), (1, 1), (2, 2), (3, 3)]
+        # Act
+        element = verification_proprietes.verifieAntisymetrique(listeTest)
+        # Assert
+        self.assertIsNone(element)
+
+    def test_VerifieAntisymetrique_ListeSymetrique_ElementUnRetourne(self):
+        # Arrange
+        listeTest = [(1, 2), (2, 3), (1, 3), (2, 1), (3, 2), (3, 1), (1, 1), (2, 2), (3, 3)]
+        # Act
+        element = verification_proprietes.verifieAntisymetrique(listeTest)
+        # Assert
+        self.assertEqual((1, 2), element)
+
+    def test_VerifieTransitive_ListeAvecQuelquesPairesSymetrique_ElementUnRetourne(self):
+        # Arrange
+        listeTest =  [(1, 2), (2, 3), (1, 3), (2, 1), (1, 1), (2, 2), (3, 3)]
+        # Act
+        element = verification_proprietes.verifieAntisymetrique(listeTest)
+        # Assert
+        self.assertEqual((1, 2), element)
+
 if __name__ == '__main__':
     unittest.main()

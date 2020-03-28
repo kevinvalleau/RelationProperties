@@ -23,6 +23,12 @@ if __name__ == '__main__':
                     print(paire, " n'a pas de paire transitive.\n")
                 else:
                     print("Relation transitive.\n")
+
+                paire = verification_proprietes.verifieAntisymetrique(listePaires)
+                if paire is not None:
+                    print(paire, " a une paire symétrique.\n")
+                else:
+                    print("Relation antisymétrique.\n")
         else:
             print("Format de liste invalide")
     except NameError:

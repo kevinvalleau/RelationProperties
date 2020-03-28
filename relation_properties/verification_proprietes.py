@@ -101,3 +101,19 @@ def verifieTransitive(listePaires):
             return (x, y)
 
         return None
+
+def verifieAntisymetrique(listePaires):
+    """
+    Vérifie si les paires fournies dans la liste passée en paramètre respectent la propriété d'antisymétrie (si a R b et b R a alors a = b)
+    :param listePaires: Liste de paires à vérifier
+    :return: true ou false
+    """
+    for x, y in listePaires:
+        try:
+            listePaires.index((y, x))
+            if x != y:
+                return (x, y)
+        except ValueError:
+            pass
+
+    return None
