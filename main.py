@@ -2,15 +2,15 @@
 Module permettant de vérifier les propriétés d'une relation en fonction d'une liste de paires.
 """
 
-def chaineVersPaire(chainePaire):
-    """
-    Transforme une chaîne de caractères représentant une paire en paire
 
-    :param paire:chainePaire à transformer en paire
-
-    :return: paire
+def estNonTuple(element):
     """
-    return eval(chainePaire)
+    Vérifie si l'élément passé en paramètre n'est pas une instance de tuple
+
+    :param element: élément à vérifier
+    :return: true ou false
+    """
+    return isinstance(element, tuple) == False
 
 
 def creeFiltreParPremierMembre(membre):
@@ -21,8 +21,10 @@ def creeFiltreParPremierMembre(membre):
 
     :return: une clôture qu'on peut passer à l'instruction filter sur une liste
     """
+
     def filtre(paire):
-       return membre == paire[0]
+        return membre == paire[0]
+
     return filtre
 
 
@@ -42,6 +44,7 @@ def verifieReflexive(listePaires):
 
     return None
 
+
 def verifieSymetrique(listePaires):
     """
     Vérifie si les paires fournies dans la liste passée en paramètre respectent la propriété de symétrie
@@ -57,6 +60,7 @@ def verifieSymetrique(listePaires):
             return (x, y)
 
     return None
+
 
 def verifieTransitive(listePaires):
     """
@@ -84,29 +88,34 @@ def verifieTransitive(listePaires):
 
         return None
 
-# réflexive, symétrique et transitive : (1,2);(2,3);(1,3);(2,1);(3,2);(3,1);(1,1);(2,2);(3,3)
+
+# réflexive, symétrique et transitive : [(1,2),(2,3),(1,3),(2,1),(3,2),(3,1),(1,1),(2,2),(3,3)]
 if __name__ == '__main__':
-    listeSaisie = input("Entrez votre liste de paires, séparées par un point-virgule :\n")
+    listePaires = eval(input("Entrez votre liste de paires, séparées par un point-virgule :\n"))
 
-    if listeSaisie != '':
-        listePaires = list(map(chaineVersPaire, listeSaisie.split(";")))
-        element = verifieReflexive(listePaires)
-        if element != None:
-            print(element, " ne respecte pas la réflexivité.\n")
+    # il faut que tous les éléments de la liste soient des paires
+
+    if isinstance(listePaires, list) and listePaires != [] and isinstance(listePaires[0], tuple):
+        listeNonTuple = list(filter(estNonTuple, listePaires))
+        if listeNonTuple == []:
+            element = verifieReflexive(listePaires)
+            if element is not None:
+                print(element, " ne respecte pas la réflexivité.\n")
+            else:
+                print("Relation réflexive.\n")
+
+            paire = verifieSymetrique(listePaires)
+            if paire is not None:
+                print(paire, " n'a pas de paire symétrique.\n")
+            else:
+                print("Relation symétrique.\n")
+
+            paire = verifieTransitive(listePaires)
+            if paire is not None:
+                print(paire, " n'a pas de paire transitive.\n")
+            else:
+                print("Relation transitive.\n")
         else:
-            print("Relation réflexive.\n")
-
-        paire = verifieSymetrique(listePaires)
-        if paire != None:
-            print(paire, " n'a pas de paire symétrique.\n")
-        else:
-            print("Relation symétrique.\n")
-
-        paire = verifieTransitive(listePaires)
-        if paire != None:
-            print(paire, " n'a pas de paire transitive.\n")
-        else:
-            print("Relation transitive.\n")
-
+            print("Format de liste invalide")
     else:
         print("Liste vide donc réflexive")
