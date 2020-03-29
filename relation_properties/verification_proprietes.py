@@ -133,6 +133,7 @@ def verifieTransitive(listePaires):
                 # On test donc le chemin suivant : x -> y et y (qui devient a) -> b => x -> b
                 try:
                     listePaires.index((x, b))
+                    break
                 except ValueError:
                     return (x, y)
         else:

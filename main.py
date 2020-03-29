@@ -6,10 +6,13 @@ from relation_properties import generation_mots
 if __name__ == '__main__':
     try:
         #listePaires = eval(input("Entrez votre liste de paires, séparées par un point-virgule :\n"))
+        #listePaires = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (3, 1), (0, 2), (2, 1)]
+        #listePaires = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (3, 1), (0, 2), (2, 1), (0, 1)]
+        #listePaires = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (3, 1), (0, 2), (2, 1), (0, 1), (1, 3), (2, 0), (1, 0), (1, 2)]
+        listePaires = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (3, 1), (0, 2), (2, 1), (0,1), (1,3),(2,0), (1,0),(1,2), (0,3), (3,0), (3,2), (2,3)]
+        #liste_mot = generation_mots.generer_liste_mots_binaires(3)
 
-        liste_mot = generation_mots.generer_liste_mots_binaires(3)
-
-        listePaires = generation_mots.generer_paires_moins_ou_autant_de_uns(liste_mot)
+        #listePaires = generation_mots.generer_paires_moins_ou_autant_de_uns(liste_mot)
         if verification_proprietes.validerListePaires(listePaires):
                 element = verification_proprietes.verifieReflexive(listePaires)
                 if element is not None:
