@@ -2,7 +2,6 @@ import unittest
 from relation_properties import verification_proprietes
 
 
-
 class TestRelationProperties(unittest.TestCase):
 
     def test_VerifieReflexive_ListeEstReflexive_AucunElementRetourne(self):
@@ -148,6 +147,7 @@ class TestRelationProperties(unittest.TestCase):
         element = verification_proprietes.verifieAsymetrique(listeTest)
         # Assert
         self.assertEqual((1, 2), element)
+
 
 if __name__ == '__main__':
     unittest.main()

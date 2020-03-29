@@ -1,11 +1,15 @@
 from relation_properties import verification_proprietes
+from relation_properties import generation_mots
 
 # réflexive, symétrique et transitive : [(1,2),(2,3),(1,3),(2,1),(3,2),(3,1),(1,1),(2,2),(3,3)]
 # [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (3, 1), (0, 2), (2, 1)]
 if __name__ == '__main__':
     try:
-        listePaires = eval(input("Entrez votre liste de paires, séparées par un point-virgule :\n"))
+        #listePaires = eval(input("Entrez votre liste de paires, séparées par un point-virgule :\n"))
 
+        liste_mot = generation_mots.generer_liste_mots_binaires(3)
+
+        listePaires = generation_mots.generer_paires_moins_ou_autant_de_uns(liste_mot)
         if verification_proprietes.validerListePaires(listePaires):
                 element = verification_proprietes.verifieReflexive(listePaires)
                 if element is not None:

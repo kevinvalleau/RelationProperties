@@ -2,6 +2,7 @@
 Module permettant de vérifier les propriétés d'une relation en fonction d'une liste de paires.
 """
 
+
 def validerListePaires(liste):
     """
     Valide que la liste passée en paramèetre est bien une liste non vide de paires
@@ -15,6 +16,7 @@ def validerListePaires(liste):
         return listeNonTuple == []
     else:
         return False
+
 
 def estNonTuple(element):
     """
@@ -58,6 +60,7 @@ def verifieReflexive(listePaires):
 
     return None
 
+
 def verifieIrreflexive(listePaires):
     """
     Vérifie si les paires fournies dans la liste passée en paramètre respectent la propriété d' irréflexivité
@@ -92,6 +95,7 @@ def verifieSymetrique(listePaires):
 
     return None
 
+
 def verifieAsymetrique(listePaires):
     """
     Vérifie si les paires fournies dans la liste passée en paramètre respectent la propriété d'asymétrie
@@ -109,6 +113,7 @@ def verifieAsymetrique(listePaires):
             pass
 
     return None
+
 
 def verifieTransitive(listePaires):
     """
@@ -134,6 +139,7 @@ def verifieTransitive(listePaires):
             pass
 
     return None
+
 
 def verifieAntisymetrique(listePaires):
     """
